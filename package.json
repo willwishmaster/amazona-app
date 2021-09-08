@@ -1,0 +1,31 @@
+{
+  "name": "amazona",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willwishmaster/amazona-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willwishmaster/amazona-app/issues"
+  },
+  "homepage": "https://github.com/willwishmaster/amazona-app#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "mongoose": "^6.0.5"
+  },
+  "devDependencies": {
+    "eslint": "^7.30.0",
+    "eslint-plugin-react": "^7.24.0",
+    "nodemon": "^2.0.12"
+  }
+}
