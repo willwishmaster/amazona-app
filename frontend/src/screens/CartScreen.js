@@ -21,12 +21,12 @@ export default function CartScreen(props) {
     const removeFromCartHandler = (id)=>{
       dispatch(removeFromCart(id));
     };
-    const checkoutHandler = (props)=>{
-      props.history.push('signin?redirect=shipping');
+    const checkoutHandler = ()=>{
+      props.history.push('/signin?redirect=shipping');
     };
 
     return (
-      <div>        
+      <div>
         <div className="row top">
           <div className="col-2">
             <h1>Shopping Cart</h1>
@@ -77,8 +77,7 @@ export default function CartScreen(props) {
               <ul>
                 <li>
                   <h2>
-                    Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : $
-                    {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+                    Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : $ {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
                   </h2>
                 </li>
                 <li>

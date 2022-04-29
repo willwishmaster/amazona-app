@@ -1,5 +1,6 @@
 import { PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS } from "../constants/productConstants";
 
+/** First line: State parameter is returning default values but it'll change depending of the case */
 export const productListReducer = (state = {loading: true, products:[]}, action)=>{
     switch (action.type) {
         case PRODUCT_LIST_REQUEST:
@@ -16,11 +17,11 @@ export const productListReducer = (state = {loading: true, products:[]}, action)
 export const productDetailsReducer= (state = {loading: true, product:[]}, action)=>{
     switch (action.type) {
         case PRODUCT_DETAILS_REQUEST:
-            return {loading:true};   
+            return {loading:true};
         case PRODUCT_DETAILS_SUCCESS:
             return {loading:false, product:action.payload};
         case PRODUCT_DETAILS_FAIL:
-            return {loading:false, error:action.payload};    
+            return {loading:false, error:action.payload};
         default:
             return state;
     }

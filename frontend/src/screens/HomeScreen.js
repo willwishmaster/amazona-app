@@ -15,6 +15,7 @@ export default function HomeScreen() {
   const dispatch = useDispatch();
   //** Get an object from the 'store'
   const productList = useSelector(state => state.productList);
+  /** In many cases "loading, error, products" object won't have values or will be simply empty or null */
   const {loading, error, products} = productList;
 
   // useEffect(() => {

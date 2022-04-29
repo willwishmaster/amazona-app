@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import store from './store';
 
 ReactDOM.render(
-  //** To manage store add the provided
+  //** Set the store add the provided
   <Provider store={store}> 
     <React.StrictMode>
       <App />
