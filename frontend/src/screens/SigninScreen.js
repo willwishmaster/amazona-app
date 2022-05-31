@@ -45,7 +45,7 @@ export default function SigninScreen(props) {
                     <input type="password" id="password" placeholder="Enter password" required onChange={e=>setPassword(e.target.value)} />
                 </div>
                 <div>
-                    <label/>
+                    <label />
                     <button className="primary" type="submit">Sign In</button>
                 </div>
                 <div>
