@@ -18,6 +18,12 @@ import RegisterScreen from './screens/RegisterScreen';
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import SigninScreen from './screens/SigninScreen';
 import OrderListScreen from './screens/OrderListScreen';
+import UserListScreen from './screens/UserListScreen';
+import UserEditScreen from './screens/UserEditScreen';
+import SellerRoute from './components/SellerRoute';
+import SellerScreen from './screens/SellerScreen';
+import SearchBox from './components/SearchBox';
+import SearchScreen from './screens/SearchScreen';
 
 function App() {
   /** To get acces to cart object in redux we use useSelector */
@@ -37,6 +43,10 @@ function App() {
           <header className="row">
             <div>
               <Link className="brand" to="/">amazona</Link>
+            </div>
+            <div>
+              {/*  History is the property of the react router doom object */}
+              <Route render={({ history }) => ( <SearchBox history={history}></SearchBox> )} ></Route>
             </div>
             <div>
               <Link to="/cart">Cart
@@ -67,6 +77,22 @@ function App() {
                 (<Link to="/signin">Sign In</Link>)
               }
 
+              {userInfo && userInfo.isSeller && (
+                <div className="dropdown">
+                <Link to="#admin">
+                  Seller <i className="fa fa-caret-down"></i>
+                </Link>
+                <ul className="dropdown-content">                  
+                  <li>
+                    <Link to="/productlist/seller">Products</Link>
+                  </li>
+                  <li>
+                    <Link to="/orderlist/seller">Orders</Link>
+                  </li>                  
+                </ul>
+              </div>
+              )}
+
               {userInfo && userInfo.isAdmin && (
               <div className="dropdown">
                 <Link to="#admin">
@@ -92,6 +118,7 @@ function App() {
           </header>
           <main>
             {/** Each ROUTE is served according to the user request, means one at the time*/}
+            <Route path="/seller/:id" component={SellerScreen}></Route>
             <Route path="/cart/:id?" component={CartScreen}></Route>
             <Route path="/product/:id" component={ProductScreen} exact></Route>
             <Route path="/product/:id/edit" component={ProductEditScreen} exact></Route>
@@ -101,10 +128,15 @@ function App() {
             <Route path="/payment" component={PaymentMethodScreen}></Route>
             <Route path="/placeorder" component={PlaceOrderScreen}></Route>
             <Route path="/order/:id" component={OrderScreen}></Route>
-            <Route path="/orderhistory" component={OrderHistoryScreen}></Route>            
+            <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+            <Route path="/search/name/:name?" component={SearchScreen} exact ></Route>
             <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
-            <AdminRoute path="/productlist"component={ProductListScreen}></AdminRoute>
-            <AdminRoute path="/orderlist" component={OrderListScreen} ></AdminRoute>
+            <AdminRoute path="/productlist"component={ProductListScreen} exact></AdminRoute>
+            <AdminRoute path="/orderlist" component={OrderListScreen} exact></AdminRoute>
+            <AdminRoute path="/userlist" component={UserListScreen}></AdminRoute>
+            <AdminRoute path="/user/:id/edit" component={UserEditScreen} ></AdminRoute>
+            <SellerRoute path="/productList/seller" component={ProductListScreen} ></SellerRoute>
+            <SellerRoute path="/orderList/seller" component={OrderListScreen} ></SellerRoute>            
             <Route path="/" component={HomeScreen} exact></Route>
           </main>
           <footer className="row center">All right reserved</footer>

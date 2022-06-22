@@ -54,7 +54,7 @@ app.get('*', (req, res) =>res.sendFile(path.join(__dirname, '/frontend/build/ind
 //     res.send('Server is ready');
 // });
 
-app.use((err, req, res, next)=>{
+app.use((err, req, res)=>{
     res.status(500).send({message:err.message});
 });
 
